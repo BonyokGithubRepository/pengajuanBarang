@@ -16,6 +16,7 @@ class CreateFormPerangkat extends Migration
         Schema::create('form_perangkat', function (Blueprint $table) {
             $table->id('id_perangkat');
             $table->string('nama_perangkat');
+            $table->string('serial_number');
             $table->timestamps();
         });
     }

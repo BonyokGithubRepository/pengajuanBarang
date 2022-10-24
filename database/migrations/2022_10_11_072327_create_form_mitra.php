@@ -15,9 +15,11 @@ class CreateFormMitra extends Migration
     {
         Schema::create('form_mitra', function (Blueprint $table) {
             $table->id('id_mitra');
+            $table->integer('id_user');
             $table->string('nama');
             $table->string('email');
             $table->string('nama_pict');
+            
             $table->timestamps();
         });
     }

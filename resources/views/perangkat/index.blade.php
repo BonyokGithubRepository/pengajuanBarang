@@ -29,7 +29,13 @@
                                           <input type="text" autocomplete="off" id="nameWithTitle" name="nama_perangkat" class="form-control"
                                               placeholder="Enter Perangkat" required/>
                                       </div>
-                                  </div>
+                                  </div><div class="row">
+                                    <div class="col mb-3">
+                                        <label for="nameWithTitle" class="form-label">Serial Number</label>
+                                        <input type="number" autocomplete="off" id="nameWithTitle" name="serial_number" class="form-control"
+                                            placeholder="Masukan serial number" required/>
+                                    </div>
+                                </div>
                               </div>
                               <div class="modal-footer">
                                   <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -48,6 +54,7 @@
               <thead>
                   <tr>
                       <th>Nama Perangkat</th>
+                      <th>Serial Number</th>
                   </tr>
               </thead>
               <tbody class="table-border-bottom-0">
@@ -55,6 +62,7 @@
                @foreach($perangkat as $p)
                   <tr>
                       <td>{{ $p->nama_perangkat }}</td>
+                      <td>{{ $p->serial_number}}</td>
                       <td>
                           <div class="dropdown">
                               <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

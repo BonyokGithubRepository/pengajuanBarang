@@ -15,6 +15,11 @@
                     <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
+                                @if(Auth::user()->role == "mitra")
+                                    ""
+                                @else
+
+                                @endif
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modalCenterTitle">Form Mitra</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -38,9 +43,17 @@
                                                     class="form-control" placeholder="xxxx@xxx.xx" required/>
                                             </div>
                                             <div class="col mb-0">
-                                                <label for="dobWithTitle" class="form-label">Nama Poto</label>
+                                                <label for="dobWithTitle" class="form-label">Nama Poto</label>      
                                                 <input type="file" id="dobWithTitle" name="nama_pict"
                                                     class="form-control" required />
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col mb-3">
+                                                <label for="nameWithTitle" class="form-label">Password</label>
+                                                <input type="password" autocomplete="off" id="nameWithTitle" name="pas" class="form-control "
+                                                    placeholder="Masukan password"  required />
                                             </div>
                                         </div>
                                     </div>
@@ -63,7 +76,10 @@
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Nama Foto</th>
+                            <th>Password</th>
+                            @if(Auth::user()->role == 'admin')
                             <th>Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
@@ -73,6 +89,8 @@
                             <td>{{ $p->nama }}</td>
                             <td>{{ $p->email }}</td>
                             <td>{{ $p->nama_pict }}</td>
+                            <td>{{ $p->password }}</td>
+                            @if(Auth::user()->role == 'admin')
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -87,6 +105,7 @@
                                     </div>
                                 </div>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

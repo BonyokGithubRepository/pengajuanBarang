@@ -42,7 +42,14 @@
                                               <div class="col mb-3">
                                                   <label for="nameWithTitle" class="form-label">Area</label>
                                                   <input type="text" id="nameWithTitle" autocomplete="off"  name="area" class="form-control"
-                                                      placeholder="Enter Name" />
+                                                      placeholder="Area" />
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col mb-3">
+                                                  <label for="nameWithTitle" class="form-label">password</label>
+                                                  <input type="password" id="nameWithTitle"  autocomplete="off" name="password" class="form-control"
+                                                      placeholder="Masukan Password" />
                                               </div>
                                           </div>
                                       </div>
@@ -66,6 +73,7 @@
                         <th>Email</th>
                         <th>No Wa</th>
                         <th>Area</th>
+                        <th>Password</th>
                         <th>Action</th> 
                       </tr>
                     </thead>
@@ -76,6 +84,7 @@
                         <td>{{ $y->email }}</td>
                         <td>{{ $y->no_wa }}</td>
                         <td>{{ $y->area  }}</td>
+                        <td>{{ $y->password }}</td>
                         <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

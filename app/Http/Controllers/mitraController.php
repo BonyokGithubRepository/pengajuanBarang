@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mitra;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Auth;
+use Illuminate\Support\Str;
 
 class mitraController extends Controller
 {
@@ -14,8 +18,9 @@ class mitraController extends Controller
      */
     public function index()
     {
+        $user = User::all();
         $mitra = Mitra::all();
-        return view ('mitra.index',compact('mitra'));
+        return view ('mitra.index',compact('mitra','user'));
     }
 
     /**
@@ -23,10 +28,31 @@ class mitraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $mitra)
+    public function create(Request $request)
     {
-        Mitra::create($mitra->all());
+
+
+        $user = new User;
+        $user->name = $request->nama;
+        $user->role = 'mitra';
+        $user->remember_token = Str::random(60);
+        $user->password = Hash::make($request->pas);
+        $user->save();
+
+
+        Mitra::create([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'nama_pict' => $request->nama_pict,
+            'id_user'=> $user->id,
+            'password'=> $request->pas,
+            'role'=>'mitra'
+        ]);
+
+
         return redirect('/mitra');
+
+        
     }
 
     /**
@@ -76,7 +102,8 @@ class mitraController extends Controller
         $data = [
             "nama" => $request->nama,
             "email" => $request->email,
-            "nama_pict" => $request->nama_pict 
+            "nama_pict" => $request->nama_pict,
+            "password" => $request->password
         ];
         $mitra->update($data);
         return redirect('/mitra');

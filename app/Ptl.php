@@ -15,4 +15,9 @@ class Ptl extends Model
         'area',
     ];
     protected $primaryKey = 'id_ptl';
+
+    public function Reques()
+    {
+        return $this->hasOne(Reques::class,'id_request','id_ptl');
+    }
 }

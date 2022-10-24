@@ -17,8 +17,13 @@ class User extends Authenticatable
      */
     protected $table = 'users';
     protected $fillable = [
-        'name', 'password',
+        'name', 'password','role','remember_token'
     ];
+
+    public function Mitra()
+    {
+        return $this->hasOne(Mitra::class,'id_mitra','id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

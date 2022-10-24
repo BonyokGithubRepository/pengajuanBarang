@@ -14,12 +14,12 @@ class CreateFormRequest extends Migration
     public function up()
     {
         Schema::create('form_request', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_ptl');
-            $table->string('nama_perangkat');
-            $table->string('nama_mitra');
+            $table->id('id_request');
+            $table->integer('id_ptl');
+            $table->integer('id_perangkat');
+            $table->integer('id_mitra');
             $table->string('spa');
-            $table->string('barcode');
+            $table->date('tgl_request');
             $table->timestamps();
         });
     }

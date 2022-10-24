@@ -74,6 +74,7 @@ class perangkatController extends Controller
     {
     $perangkat = Perangkat::find($id_perangkat);
     $perangkat->nama_perangkat = $request->nama_perangkat;
+    $perangkat->serial_number = $request->serial_number;
     $perangkat->save();
     return redirect('/perangkat');
     }

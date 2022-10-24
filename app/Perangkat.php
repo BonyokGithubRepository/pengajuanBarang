@@ -10,6 +10,12 @@ class Perangkat extends Model
     protected $table = 'form_perangkat';
     protected $fillable = [
         'nama_perangkat',
+        'serial_number'
     ];
     protected $primaryKey = 'id_perangkat';
+
+    public function Reques()
+    {
+        return $this->hasOne(Reques::class,'id_request','id_perangkat');
+    }
 }

@@ -18,13 +18,6 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-
-
-    public function register()
-    {
-        return view('auth.register');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,10 +25,15 @@ class AuthController extends Controller
      */
     public function postlogin(Request $request)
     {
-      if(Auth::attempt($request->only('name','password'))){
-        return redirect('/');
-      }
-        return redirect('/login');
+    //   if(Auth::attempt($request->only('name','password'))){
+    //     return redirect('/');
+    //   } 
+    //     return redirect('/login');
+        // var_dump($request->name, $request->password);
+        if (Auth::attempt($request->only('name','password'))) {
+             return redirect('/');
+        }
+            return redirect('/login');
     }
 
     /**

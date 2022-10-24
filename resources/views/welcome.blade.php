@@ -3,5 +3,6 @@
 @include('sweetalert::alert')
 
 
-<h1>welcome {{Auth()->user()->name ?? " "}}</h1>
+
+<h1>Selamat Datang {{Auth()->user()->name ?? " "}}</h1>
 @endsection

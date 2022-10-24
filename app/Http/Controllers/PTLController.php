@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PTL;
+use App\User;
+use Auth;
+use Illuminate\Support\Str;
 
 class PTLController extends Controller
 {
@@ -23,9 +26,22 @@ class PTLController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $PTL)
+    public function create(Request $request)
     {
-        PTL::create($PTL->all());
+        Ptl::create([
+        'nama' => $request->nama,
+        'email' => $request->email,
+        'no_wa' => $request->no_wa,
+        'area' => $request->area,
+        'id_user'=> auth::user()->id,
+        'password'=> bcrypt($request->password)
+    ]);
+        User::create([
+        'name' => $request -> nama,
+        'role' => 'ptl',
+        'remember_token' => Str::random(60),
+        'password' => bcrypt($request->password)
+    ]);
         return redirect('/PTL');
     }
 
